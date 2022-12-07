@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_Music">
+
+    <fragment
+        android:id="@+id/nav_Music"
+        android:name="com.nearmusic.ui.Music.MusicFragment"
+        android:label="@string/menu_Music"
+        tools:layout="@layout/fragment_music" >
+        <action
+            android:id="@+id/action_nav_Music_to_addMusicFragment"
+            app:destination="@id/addMusicFragment" />
+        <action
+            android:id="@+id/action_nav_Music_to_updateMusicFragment"
+            app:destination="@id/updateMusicFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.nearmusic.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.nearmusic.slideshow.SlideshowFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addMusicFragment"
+        android:name="com.nearmusic.ui.Music.AddMusicFragment"
+        android:label="@string/bt_add_Music"
+        tools:layout="@layout/fragment_add__music_" >
+        <action
+            android:id="@+id/action_addMusicFragment_to_nav_Music"
+            app:destination="@id/nav_Music" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateMusicFragment"
+        android:name="com.nearmusic.ui.Music.UpdateMusicFragment"
+        android:label="@string/bt_update_Music"
+        tools:layout="@layout/fragment_update_music" >
+        <action
+            android:id="@+id/action_updateMusicFragment_to_nav_Music"
+            app:destination="@id/nav_Music" />
+        <argument
+            android:name="music"
+            app:argType="com.nearmusic.model.Music" />
+    </fragment>
+</navigation>

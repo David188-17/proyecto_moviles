@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">nearmusic3</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="tv_genero">genero musical</string>
+    <string name="tv_contrasena">Contraseña</string>
+    <string name="menu_Music">Principal</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="default_web_client_idr" translatable="false">132292272379-h84qa8cm7pik9525cv0o0ih9eb2793vk.apps.googleusercontent.com</string>
+    <string name="title_activity_Principal" />
+    <string name="tv_latitud_lb">Latitud</string>
+    <string name="tv_correo">correo</string>
+
+    <string name="tv_longitud_lb">Longitud</string>
+    <string name="tv_altura_lb">Altura</string>
+    <string name="msg_nombre">Nombre de la cancion</string>
+    <string name="msg_genero">genero de la cancion</string>
+    <string name="msg_artista">nombre artista</string>
+    <string name="msg_anios">año de creacion</string>
+    <string name="bt_add_Music">Agregar cancion</string>
+    <string name="msg_Music_added">Music agregado</string>
+    <string name="msg_data">Faltan datos</string>
+    <string name="msg_firebase_add">Music agregado</string>
+    <string name="msg_firebase_update">Music actualizado</string>
+    <string name="msgEscucharAudio">Escuchar nota de audio</string>
+    <string name="msg_imagen">Imagen del Music</string>
+    <string name="graba_pausa">Graba o pausa grabación</string>
+    <string name="escuchaPlay">Escucha grabación</string>
+    <string name="delete_nota">Borra nota de audio</string>
+    <string name="play_nota">Escuchar nota de audio</string>
+    <string name="rec_stop_nota">Graba o detiene nota de audio</string>
+    <string name="take_photo">Toma foto</string>
+    <string name="rotate_l">Rota izquierda</string>
+    <string name="rotale_r">Rota a la derecha</string>
+    <string name="msg_graba_audio">Grabando nota de audio</string>
+    <string name="msg_detener_audio">Nota de audio detenida</string>
+    <string name="msg_subiendo_audio">Subiendo Nota Audio</string>
+    <string name="msg_subiendo_imagen">Subiendo imagen</string>
+    <string name="msg_subiendo_Musica">Subiendo Music</string>
+    <string name="msg_Music_updated">cancion  actualizada</string>
+    <string name="bt_delete_Music">Eliminar musica</string>
+    <string name="msg_pregunta_delete">¿Esta seguro de eliminar la cancion </string>
+    <string name="msg_si">Si</string>
+    <string name="msg_no">No</string>
+    <string name="msg_Music_deleted">Music eliminado</string>
+    <string name="bt_update_Music">Actualizar Music</string>
+    <string name="todo" />
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

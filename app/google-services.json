@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "132292272379",
+    "project_id": "near-efb94",
+    "storage_bucket": "near-efb94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132292272379:android:5f41bd58a2c2ffdbebd05e",
+        "android_client_info": {
+          "package_name": "com.nearmusic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132292272379-lu449k1gvb0jlkvgfrlp3sd6bdhdtqpp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nearmusic",
+            "certificate_hash": "b6c3c1a8616f8d336ca2959d4b3ae098f5d895a2"
+          }
+        },
+        {
+          "client_id": "132292272379-h84qa8cm7pik9525cv0o0ih9eb2793vk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsan4XswOxKAZiVyjfGCbz8rh411qNEvE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132292272379-h84qa8cm7pik9525cv0o0ih9eb2793vk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
