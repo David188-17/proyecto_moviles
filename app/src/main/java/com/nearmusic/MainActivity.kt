@@ -1,6 +1,8 @@
 package com.nearmusic
 
+import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -14,7 +16,10 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.ktx.storage
 import com.nearmusic.databinding.ActivityMainBinding
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -62,7 +67,37 @@ class MainActivity : AppCompatActivity() {
 
             } catch (e: ApiException) {
 
+
             }
+            if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+                val rutaUri: Uri? = data.data
+
+
+
+
+                val rutaNube = "MusicApp/${Firebase.auth.currentUser?.email}/imagenes/prueba.mp3"
+
+                val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
+
+                referencia.putFile(rutaUri!!)
+                    .addOnSuccessListener {
+                        referencia.downloadUrl
+                            .addOnSuccessListener {
+                                val rutaImagen = it.toString()
+                                addMusic(rutaAudio,rutaImagen)
+                            }
+                    }
+                    .addOnFailureListener{
+
+                        addMusic(rutaAudio,"")
+
+                    }
+            } else {
+
+                addMusic(rutaAudio,"")
+            }
+
+
         }
     }
 

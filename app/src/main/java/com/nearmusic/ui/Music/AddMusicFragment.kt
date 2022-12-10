@@ -26,6 +26,7 @@ import com.nearmusic.R
 import com.nearmusic.databinding.FragmentAddMusicBinding
 import com.nearmusic.model.Music
 import com.nearmusic.viewmodel.MusicViewModel
+import java.io.File
 
 
 class AddMusicFragment : Fragment() {
@@ -52,7 +53,7 @@ class AddMusicFragment : Fragment() {
         binding.btAdd.setOnClickListener { subeNota() }
         binding.progressBar.visibility = ProgressBar.VISIBLE
         binding.msgMensaje.text = getString(R.string.msg_subiendo_audio)
-        binding.msgMensaje.visibility= TextView.VISIBLE
+        binding.msgMensaje.visibility = TextView.VISIBLE
 
 
         audioUtiles = AudioUtiles(
@@ -65,11 +66,11 @@ class AddMusicFragment : Fragment() {
             getString(R.string.msg_detener_audio)
 
 
-
         )
 
         tomarFotoActivity = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()) {
+            ActivityResultContracts.StartActivityForResult()
+        ) {
             if (it.resultCode == Activity.RESULT_OK) {
                 imagenUtiles.actualizaFoto()
 
@@ -83,7 +84,8 @@ class AddMusicFragment : Fragment() {
             binding.btRotaL,
             binding.btRotaR,
             binding.imagen,
-            tomarFotoActivity)
+            tomarFotoActivity
+        )
 
 
         return binding.root
@@ -94,12 +96,14 @@ class AddMusicFragment : Fragment() {
     private fun subeNota() {
 
         val archivoLocal = audioUtiles.audioFile
-        if(archivoLocal.exists() && archivoLocal.isFile &&
-            archivoLocal.canRead()) {
+        if (archivoLocal.exists() && archivoLocal.isFile &&
+            archivoLocal.canRead()
+        ) {
 
             val rutaLocal = Uri.fromFile(archivoLocal)
 
-            val rutaNube = "MusicApp/${Firebase.auth.currentUser?.email}/audios/${archivoLocal.name}"
+            val rutaNube =
+                "MusicApp/${Firebase.auth.currentUser?.email}/audios/${archivoLocal.name}"
 
             val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
 
@@ -111,7 +115,7 @@ class AddMusicFragment : Fragment() {
                             subeImagen(rutaAudio)
                         }
                 }
-                .addOnFailureListener{
+                .addOnFailureListener {
 
                     subeImagen("")
 
@@ -122,6 +126,56 @@ class AddMusicFragment : Fragment() {
 
         }
     }
+
+    const val REQUEST_mp3_GET = 1
+
+    fun selectmp3() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+            type = "*"
+        }
+
+        startActivityForResult(intent, REQUEST_mp3_GET)
+
+
+    }
+    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        if (requestCode == REQUEST_mp3_GET && resultCode == Activity.RESULT_OK) {
+            val fullPhotoUri: Uri = data.data
+
+
+            val rutaLocal = Uri.fromFile(archivoLocal)
+
+            val rutaNube = "MusicApp/${Firebase.auth.currentUser?.email}/imagenes/${archivoLocal.name}"
+
+            val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
+
+            referencia.putFile(rutaLocal)
+                .addOnSuccessListener {
+                    referencia.downloadUrl
+                        .addOnSuccessListener {
+                            val rutaImagen = it.toString()
+                            addMusic(rutaAudio,rutaImagen)
+                        }
+                }
+                .addOnFailureListener{
+
+                    addMusic(rutaAudio,"")
+
+                }
+        } else {
+
+            addMusic(rutaAudio,"")
+        }
+    }
+
+
+
+
+
+
+
+
+
 
     private fun subeImagen(rutaAudio: String) {
 
