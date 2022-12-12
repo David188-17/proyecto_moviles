@@ -1,6 +1,8 @@
 package com.nearmusic.ui.Music
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +16,8 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
@@ -31,7 +35,7 @@ import java.io.File
 
 class AddMusicFragment : Fragment() {
 
-
+    val REQUEST_MP3_GET = 1
     private lateinit var musicViewModel: MusicViewModel
     private var _binding: FragmentAddMusicBinding? = null
     private val binding get() = _binding!!
@@ -50,16 +54,16 @@ class AddMusicFragment : Fragment() {
 
         _binding = FragmentAddMusicBinding.inflate(inflater, container, false)
 
-        binding.btAdd.setOnClickListener { subeNota() }
+        binding.btAdd.setOnClickListener { addMusic() }
         binding.progressBar.visibility = ProgressBar.VISIBLE
         binding.msgMensaje.text = getString(R.string.msg_subiendo_audio)
         binding.msgMensaje.visibility = TextView.VISIBLE
-
+binding.btCancion.setOnClickListener{selectMp3()}
 
         audioUtiles = AudioUtiles(
             requireActivity(),
             requireContext(),
-            binding.btAccion,
+            binding.btCancion,
             binding.btPlay,
             binding.btDelete,
             getString(R.string.msg_graba_audio),
@@ -92,90 +96,63 @@ class AddMusicFragment : Fragment() {
 
     }
 
+    fun selectMp3() {
 
-    private fun subeNota() {
-
-        val archivoLocal = audioUtiles.audioFile
-        if (archivoLocal.exists() && archivoLocal.isFile &&
-            archivoLocal.canRead()
-        ) {
-
-            val rutaLocal = Uri.fromFile(archivoLocal)
-
-            val rutaNube =
-                "MusicApp/${Firebase.auth.currentUser?.email}/audios/${archivoLocal.name}"
-
-            val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
-
-            referencia.putFile(rutaLocal)
-                .addOnSuccessListener {
-                    referencia.downloadUrl
-                        .addOnSuccessListener {
-                            val rutaAudio = it.toString()
-                            subeImagen(rutaAudio)
-                        }
-                }
-                .addOnFailureListener {
-
-                    subeImagen("")
-
-                }
-        } else {
-
-            subeImagen("")
-
-        }
-    }
-
-    const val REQUEST_mp3_GET = 1
-
-    fun selectmp3() {
         val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-            type = "*"
+
+            type = "audios/*"
+        }
+        if(intent.resolveActivity(requireContext().packageManager) != null) {
+
+            super.startActivityForResult(intent, REQUEST_MP3_GET)
+
         }
 
-        startActivityForResult(intent, REQUEST_mp3_GET)
+    }
+
+    override fun onActivityResult(requestMp3: Int, resultMp3: Int, data: Intent? ) {
+
+        if(requestMp3 == REQUEST_MP3_GET && resultMp3 == Activity.RESULT_OK) {
+
+            val thumbnail: File? = data?.getParcelableExtra("data")
+            val fullMp3Uri: Uri? = data?.data
+            val archivoLocal = audioUtiles.audioFile
+
+            if (archivoLocal.exists() && archivoLocal.isFile &&
+                archivoLocal.canRead()) {
+
+                val rutaLocal = Uri.fromFile(archivoLocal)
+
+                val rutaNube =
+                    "MusicApp/${Firebase.auth.currentUser?.email}/audios/${archivoLocal.name}"
+
+                val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
+
+                referencia.putFile(rutaLocal)
+                    .addOnSuccessListener {
+                        referencia.downloadUrl
+                            .addOnSuccessListener {
+                                val rutaAudio = it.toString()
+                                subeImagen(rutaAudio)
+                            }
+                    }
+                    .addOnFailureListener {
+
+                        subeImagen("")
+
+                    }
+            } else {
+
+                subeImagen("")
+
+            }
+
+        }
+
+
 
 
     }
-    fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
-        if (requestCode == REQUEST_mp3_GET && resultCode == Activity.RESULT_OK) {
-            val fullPhotoUri: Uri = data.data
-
-
-            val rutaLocal = Uri.fromFile(archivoLocal)
-
-            val rutaNube = "MusicApp/${Firebase.auth.currentUser?.email}/imagenes/${archivoLocal.name}"
-
-            val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
-
-            referencia.putFile(rutaLocal)
-                .addOnSuccessListener {
-                    referencia.downloadUrl
-                        .addOnSuccessListener {
-                            val rutaImagen = it.toString()
-                            addMusic(rutaAudio,rutaImagen)
-                        }
-                }
-                .addOnFailureListener{
-
-                    addMusic(rutaAudio,"")
-
-                }
-        } else {
-
-            addMusic(rutaAudio,"")
-        }
-    }
-
-
-
-
-
-
-
-
-
 
     private fun subeImagen(rutaAudio: String) {
 
@@ -215,7 +192,7 @@ class AddMusicFragment : Fragment() {
 
 
 
-    private fun addMusic(rutaAudio: String, rutaImagen: String) {
+     fun addMusic(rutaAudio: String, rutaImagen: String) {
         val nombrecancion = binding.etNombre.text.toString()
 
         binding.msgMensaje.text = getString(R.string.msg_subiendo_Musica)

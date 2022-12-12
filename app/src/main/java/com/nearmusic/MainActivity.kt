@@ -19,7 +19,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import com.nearmusic.databinding.ActivityMainBinding
-import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -48,8 +47,6 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         binding.btGoogle.setOnClickListener { googleSignIn() }
 
-
-
     }
 
     private fun googleSignIn() {
@@ -57,7 +54,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, 5000)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent? ) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 5000) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -69,37 +66,10 @@ class MainActivity : AppCompatActivity() {
 
 
             }
-            if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-                val rutaUri: Uri? = data.data
-
-
-
-
-                val rutaNube = "MusicApp/${Firebase.auth.currentUser?.email}/imagenes/prueba.mp3"
-
-                val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
-
-                referencia.putFile(rutaUri!!)
-                    .addOnSuccessListener {
-                        referencia.downloadUrl
-                            .addOnSuccessListener {
-                                val rutaImagen = it.toString()
-                                addMusic(rutaAudio,rutaImagen)
-                            }
-                    }
-                    .addOnFailureListener{
-
-                        addMusic(rutaAudio,"")
-
-                    }
-            } else {
-
-                addMusic(rutaAudio,"")
-            }
-
-
         }
     }
+
+
 
     private fun firebaseAuthWithGoogle(idToken: String?) {
 

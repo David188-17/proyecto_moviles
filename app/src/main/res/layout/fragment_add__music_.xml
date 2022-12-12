@@ -44,15 +44,14 @@
             android:hint="@string/msg_anios"
             android:inputType="phone" />
 
+
         <Button
             android:id="@+id/btAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/bt_add_Music" />
 
-
-
-            <TableRow
+        <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
@@ -81,12 +80,12 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/bt_accion"
+                android:id="@+id/bt_cancion"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:contentDescription="@string/todo"
-                android:src="@drawable/ic_mic"
+                android:src="@drawable/ic_addmusic"
                 tools:ignore="DuplicateSpeakableTextCheck" />
 
             <ImageButton
@@ -118,7 +117,6 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/ic_photo" />
-
             <ImageButton
                 android:id="@+id/bt_rota_l"
                 android:layout_width="wrap_content"
@@ -134,6 +132,8 @@
                 android:layout_weight="1"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/ic_rotate_r" />
+
+
         </LinearLayout>
 
         <ImageView
