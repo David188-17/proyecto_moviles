@@ -6,10 +6,13 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.Button
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.material.internal.ContextUtils.getActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -47,6 +50,11 @@ class MainActivity : AppCompatActivity() {
         googleSignInClient = GoogleSignIn.getClient(this, gso)
         binding.btGoogle.setOnClickListener { googleSignIn() }
 
+
+
+
+
+
     }
 
     private fun googleSignIn() {
@@ -54,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, 5000)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent? ) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 5000) {
             val tarea = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -63,7 +71,6 @@ class MainActivity : AppCompatActivity() {
                 firebaseAuthWithGoogle(cuenta.idToken)
 
             } catch (e: ApiException) {
-
 
             }
         }

@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.nearmusic">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -28,6 +32,16 @@
             android:exported="false"
             android:label="@string/title_activity_Principal"
             android:theme="@style/Theme.NearMusic.NoActionBar" />
+        <activity
+            android:name=".Musica"
+            android:exported="false"/>
+
+        <activity
+            android:name=".Radio"
+            android:exported="false"/>
+
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,9 +1,11 @@
 package com.nearmusic
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
@@ -25,9 +27,18 @@ class Principal : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityPrincipalBinding
 
+
+    private lateinit var buttonPlay: Button
+    private lateinit var buttonPause: Button
+    private lateinit var buttonNext: Button
+
+    private lateinit var mediaPlayer: MediaPlayer
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        setContentView(R.layout.activity_radio)
         binding = ActivityPrincipalBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

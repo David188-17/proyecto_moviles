@@ -20,14 +20,14 @@ import java.io.IOException
 class AudioUtiles(
     private val actividad: Activity,
     private val contexto: Context,
-    private val btCancion: ImageButton,
+    private val btAccion: ImageButton,
     private val btPlay: ImageButton,
     private val btDelete: ImageButton,
     private val msgIniciaNotaAudio: String,
     private val msgDetieneNotaAudio: String) {
 
     init {
-        btCancion.setOnClickListener { grabaStop() }
+        btAccion.setOnClickListener { grabaStop() }
         btPlay.setOnClickListener { playNota() }
         btDelete.setOnClickListener { borrarNota() }
         btPlay.isEnabled = false
@@ -72,7 +72,7 @@ class AudioUtiles(
             mediaRecorder?.prepare()
             mediaRecorder?.start()
             Toast.makeText(contexto,msgIniciaNotaAudio,Toast.LENGTH_LONG).show()
-            btCancion.setImageResource(R.drawable.ic_stop)
+            btAccion.setImageResource(R.drawable.ic_stop)
             btPlay.isEnabled = false
             btDelete.isEnabled = false
         } catch (e: IllegalStateException) {
@@ -88,7 +88,7 @@ class AudioUtiles(
         mediaRecorder?.stop()
         mediaRecorder?.release()
         Toast.makeText(contexto,msgDetieneNotaAudio,Toast.LENGTH_SHORT).show()
-        btCancion.setImageResource(R.drawable.ic_addmusic)
+        btAccion.setImageResource(R.drawable.ic_mic)
     }
 
     private fun playNota() {
@@ -116,6 +116,8 @@ class AudioUtiles(
         }
     }
 }
+
+
 
 
 

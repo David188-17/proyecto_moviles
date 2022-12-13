@@ -23,6 +23,8 @@
     <string name="msg_artista">nombre artista</string>
     <string name="msg_anios">año de creacion</string>
     <string name="bt_add_Music">Agregar cancion</string>
+
+    <string name="bt_radio">ver radio</string>
     <string name="msg_Music_added">Music agregado</string>
     <string name="msg_data">Faltan datos</string>
     <string name="msg_firebase_add">Music agregado</string>

@@ -5,9 +5,13 @@
       <map>
         <entry key="..\:/Documentos/near/app/src/main/res/drawable-v24/ic_mic.xml" value="0.213" />
         <entry key="..\:/Documentos/near/app/src/main/res/drawable-v24/ic_stop.xml" value="0.213" />
+        <entry key="..\:/Documentos/near/app/src/main/res/drawable/ic_play.xml" value="0.2555" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/Music_fila.xml" value="0.358695652173913" />
-        <entry key="..\:/Documentos/near/app/src/main/res/layout/activity_main.xml" value="0.1890625" />
+        <entry key="..\:/Documentos/near/app/src/main/res/layout/activity_Radio.xml" value="0.36666666666666664" />
+        <entry key="..\:/Documentos/near/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Documentos/near/app/src/main/res/layout/activity_musica.xml" value="0.36666666666666664" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/activity_principal.xml" value="0.28854166666666664" />
+        <entry key="..\:/Documentos/near/app/src/main/res/layout/activity_radio.xml" value="0.37864583333333335" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/app_bar_principal.xml" value="0.28854166666666664" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/content_principal.xml" value="0.33697916666666666" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_add__music_.xml" value="0.34739583333333335" />
@@ -15,9 +19,11 @@
         <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_gallery.xml" value="0.358695652173913" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_music.xml" value="0.34739583333333335" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_music2.xml" value="0.358695652173913" />
+        <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_radio.xml" value="0.36666666666666664" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_slideshow.xml" value="0.358695652173913" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/fragment_update_music.xml" value="0.33697916666666666" />
         <entry key="..\:/Documentos/near/app/src/main/res/layout/music_fila.xml" value="0.358695652173913" />
+        <entry key="..\:/Documentos/near/app/src/main/res/layout/musica.xml" value="0.365625" />
         <entry key="..\:/Documentos/near/app/src/main/res/menu/activity_principal_drawer.xml" value="0.36666666666666664" />
       </map>
     </option>
