@@ -54,11 +54,11 @@ class AddMusicFragment : Fragment() {
 
         _binding = FragmentAddMusicBinding.inflate(inflater, container, false)
 
-        binding.btAdd.setOnClickListener { addMusic() }
+        binding.btCancion.setOnClickListener { selectMp3() }
         binding.progressBar.visibility = ProgressBar.VISIBLE
         binding.msgMensaje.text = getString(R.string.msg_subiendo_audio)
         binding.msgMensaje.visibility = TextView.VISIBLE
-binding.btCancion.setOnClickListener{selectMp3()}
+
 
         audioUtiles = AudioUtiles(
             requireActivity(),
