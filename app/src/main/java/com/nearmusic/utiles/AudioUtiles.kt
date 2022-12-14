@@ -12,8 +12,8 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-
 import com.nearmusic.R
+
 import java.io.File
 import java.io.IOException
 
@@ -36,7 +36,7 @@ class AudioUtiles(
     private var mediaRecorder: MediaRecorder? = null
     private var grabando: Boolean = false
     var audioFile: File = File.createTempFile("audio_", ".mp3")
-//aca se encarga de grabar una nota de audio
+
     private fun grabaStop() {
         if (ContextCompat.checkSelfPermission(contexto, Manifest.permission.RECORD_AUDIO) !=
             PackageManager.PERMISSION_GRANTED) {
@@ -66,7 +66,7 @@ class AudioUtiles(
         mediaRecorder!!.setAudioEncoder(MediaRecorder.AudioEncoder.AAC)
         mediaRecorder!!.setOutputFile(audioFile)
     }
-//esta parte inicia la grabacion
+
     private fun iniciaGrabacion() {
         try {
             mediaRecorder?.prepare()
@@ -81,7 +81,7 @@ class AudioUtiles(
             e.printStackTrace()
         }
     }
-// se encarga de detener el proceso inciiado en la parte anterior
+
     private fun detenerNota() {
         btPlay.isEnabled = true
         btDelete.isEnabled = true
@@ -90,7 +90,7 @@ class AudioUtiles(
         Toast.makeText(contexto,msgDetieneNotaAudio,Toast.LENGTH_SHORT).show()
         btAccion.setImageResource(R.drawable.ic_mic)
     }
-//esta seccion se encarga de reproducir la nota ya grabada anteriormente
+
     private fun playNota() {
         try {
             if (audioFile.exists() && audioFile.canRead()) {
@@ -103,7 +103,7 @@ class AudioUtiles(
             e.printStackTrace()
         }
     }
-//la siguiente funcion borra la nota selecionada
+
     private fun borrarNota() {
         try {
             if (audioFile.exists()) {

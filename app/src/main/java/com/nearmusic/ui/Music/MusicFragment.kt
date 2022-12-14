@@ -13,7 +13,7 @@ import com.nearmusic.adapter.MusicAdapter
 import com.nearmusic.databinding.FragmentMusicBinding
 import com.nearmusic.viewmodel.MusicViewModel
 
-
+// en esta seccion se puede ver como nosotros llevamos a acabo el fragment de music
 class MusicFragment : Fragment() {
 
     private var _binding: FragmentMusicBinding? = null
@@ -33,7 +33,7 @@ class MusicFragment : Fragment() {
             findNavController().navigate(R.id.action_nav_Music_to_addMusicFragment)
         }
 
-        //Se genera el recicler view para ver la información...
+        //Se genera el recicler view para ver la información
         val MusicAdapter= MusicAdapter()
         val reciclador = binding.reciclador
         reciclador.adapter = MusicAdapter
