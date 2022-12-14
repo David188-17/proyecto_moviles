@@ -1,7 +1,7 @@
 package com.nearmusic.data
 
 import android.util.Log
-import androidx.lifecycle.LiveData
+
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.DocumentReference
@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestoreSettings
 import com.google.firebase.ktx.Firebase
 
 import com.nearmusic.model.Music
+
 
 
 class MusicDao {
@@ -24,45 +25,39 @@ class MusicDao {
     private var firestore: FirebaseFirestore =FirebaseFirestore.getInstance()
 
     init{
+        val usuario =Firebase.auth.currentUser?.email
         //inicia la configuracion de firestore
+
         firestore.firestoreSettings =FirebaseFirestoreSettings.Builder().build()
 
 
     }
-     fun saveMusic(music: Music){
-         //Para definir un documento en la nube
+    fun saveMusic(music: Music) {
 
-val documento : DocumentReference
+        val documento: DocumentReference
 
-if (music.id.isEmpty()) {//si esta vacio es un nuevo documento...
-documento =firestore.
+        if (music.id.isEmpty()) {
+            documento = firestore.collection(coleccion1)
+                .document(usuario)
+                .collection(coleccion2)
+                .document()
+            music.id = documento.id
+        } else {
+            documento = firestore.collection(coleccion1)
+                .document(usuario)
+                .collection(coleccion2)
+                .document(music.id)
 
-collection(coleccion1)
+        }
 
-    .document(usuario)
-    .collection(coleccion2)
-    .document()
-    music.id = documento.id
+        documento.set(music)
+            .addOnSuccessListener {
+                Log.d("saveMusic", "Music creado / actualizado")
+            }
+            .addOnSuccessListener {
+                Log.d("saveMusic", "Music NO creado / actualizado")
+            }
 
-}else{//si el id tiene algo... entonces se va a modificar ese documento(music)
-    documento =firestore.
-
-    collection(coleccion1)
-
-        .document(usuario)
-        .collection(coleccion2)
-        .document()
-
-
-}
-         //ahora se modifica o crea el documento
-         documento.set(music)
-             .addOnCompleteListener{
-                 Log.d("saveMusic","Music creado/actualizado")
-             }
-             .addOnCompleteListener{
-                 Log.e("saveMusic","Music no crwado/actualizado")
-             }
     }
 
 
@@ -71,9 +66,8 @@ collection(coleccion1)
 
      fun deleteMusic(music: Music) {
          // se valida si el music tiene id... para poder borrarlo
-         if (music.id.isEmpty()) {//si  no esta vacio ... se puede eliminar
-             firestore.
-             collection(coleccion1)
+         if (music.id.isNotEmpty()) {//si  no esta vacio ... se puede eliminar
+             firestore.collection(coleccion1)
 
                  .document(usuario)
                  .collection(coleccion2)
@@ -81,17 +75,17 @@ collection(coleccion1)
 
                  .delete()
 
-                 .addOnCompleteListener{
+                 .addOnSuccessListener{
                      Log.d("deleteMusic","Music eliminado")
                  }
-                 .addOnCompleteListener{
-                     Log.e("deleteMusic","Music No eliminado")
+                 .addOnSuccessListener{
+                     Log.d("deleteMusic","Music No eliminado")
                  }
          }
      }
 
-    fun getMusices() : MutableLiveData<List<Music>> {
-val listaMusices = MutableLiveData<List<Music>>()
+    fun getMusic() : MutableLiveData<List<Music>> {
+val listaMusic = MutableLiveData<List<Music>>()
 
         firestore.
         collection(coleccion1)
@@ -115,10 +109,10 @@ val listaMusices = MutableLiveData<List<Music>>()
 
                         }
                     }
-                    listaMusices.value = lista
+                    listaMusic.value = lista
                 }
             }//**
-        return listaMusices
+        return listaMusic
 
 
     }

@@ -16,20 +16,20 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>(){
 
     inner class MusicViewHolder(private val itemBinding: MusicFilaBinding)
         : RecyclerView.ViewHolder(itemBinding.root) {
-        fun dibuja(Music: Music) {
-            itemBinding.tvNombrecancion.text = Music.nombre_cancion
-            itemBinding.tvArtista.text = Music.artista
-            itemBinding.tvGenero.text = Music.genero
+        fun dibuja(music: Music) {
+            itemBinding.tvNombrecancion.text = music.nombre_cancion
+            itemBinding.tvArtista.text = music.artista
+            itemBinding.tvGenero.text = music.genero
 
 
 
             Glide.with(itemBinding.root.context)
-                .load(Music.rutaImagen)
+                .load(music.rutaImagen)
                 .circleCrop()
                 .into(itemBinding.imagen)
             itemBinding.vistaFila.setOnClickListener {
                 // creo una accion para navegar a updateMusic pasando un argumento Music
-                val action= MusicFragmentDirections.actionNavMusicToUpdateMusicFragment(Music)
+                val action= MusicFragmentDirections.actionNavMusicToUpdateMusicFragment(music)
 
                 //efectivamente se pasa al fragmento...
                 itemView.findNavController().navigate(action)
@@ -38,7 +38,7 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>(){
     }
 
     //La lista donde están los objetos Music a dibujarse...
-    private var listaMusices = emptyList<Music>()
+    private var listaMusic = emptyList<Music>()
 
     //Esta función crea "cajitas" para cada Music.. en memoria
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MusicViewHolder {
@@ -52,17 +52,17 @@ class MusicAdapter : RecyclerView.Adapter<MusicAdapter.MusicViewHolder>(){
 
     //Esta función toma un Music y lo envia a dibujar...
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
-        val Music = listaMusices[position]
-        holder.dibuja(Music)
+        val music = listaMusic[position]
+        holder.dibuja(music)
     }
 
     //Esta función devuelve la cantidad de elementos a dibujar...(cajitas)
     override fun getItemCount(): Int {
-        return listaMusices.size
+        return listaMusic.size
     }
 
-    fun setListaMusices(Musices: List<Music>) {
-        this.listaMusices = Musices
+    fun setListaMusices(Music: List<Music>) {
+        this.listaMusic = Music
         notifyDataSetChanged()
     }
 

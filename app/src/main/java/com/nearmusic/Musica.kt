@@ -27,7 +27,7 @@ class Musica : AppCompatActivity(){
         buttonPause = findViewById(R.id.buttonPause)
         buttonNext = findViewById(R.id.buttonNext)
 
-        RadioLaInolvidable()
+        RadioNear()
         Next()
 
 
@@ -35,7 +35,7 @@ class Musica : AppCompatActivity(){
 
     //PRIMAERA OPCION
 
-    private fun RadioLaInolvidable() {
+    private fun RadioNear() {
 
         val url = "https://24943.live.streamtheworld.com/CRP_LI_SC?csegid=20001&dist=20001&ttag=20001"; //"https://serverssl.innovatestream.pe:8080/http://167.114.118.120:7442/;";
 
@@ -49,11 +49,11 @@ class Musica : AppCompatActivity(){
 
         mediaPlayer.setOnPreparedListener {
 
-            setOnClickListeners(this)
+            play(this)
         }
     }
 
-    private fun setOnClickListeners(context: Context) {
+    private fun play(context: Context) {
         buttonPlay.setOnClickListener {
             mediaPlayer.start()
             Toast.makeText(context, "Play Buscando Radio || Reproduciendo... ", Toast.LENGTH_SHORT).show()

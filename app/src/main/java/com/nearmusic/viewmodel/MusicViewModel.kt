@@ -1,5 +1,7 @@
 package com.nearmusic.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,10 +11,10 @@ import com.nearmusic.repository.MusicRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MusicViewModel : ViewModel() {
+class MusicViewModel (application: Application) : AndroidViewModel(application) {
 
     private val musicRepository: MusicRepository = MusicRepository(MusicDao())
-    val getMusices: MutableLiveData<List<Music>> = musicRepository.getMusices
+    val getMusic: MutableLiveData<List<Music>> = musicRepository.getMusic
 
 //....
 

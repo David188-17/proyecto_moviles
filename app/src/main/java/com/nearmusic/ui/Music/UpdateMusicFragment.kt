@@ -58,10 +58,10 @@ class UpdateMusicFragment : Fragment() {
             mediaPlayer = MediaPlayer()
             mediaPlayer.setDataSource(args.music.rutaAudio)
             mediaPlayer.prepare()
-            binding.btPlay.isEnabled=true
+           binding.btPlay.isEnabled=true
 
         } else {
-            binding.btPlay.isEnabled=false
+           binding.btPlay.isEnabled=false
 
         }
 

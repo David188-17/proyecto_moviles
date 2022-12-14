@@ -19,5 +19,5 @@ class MusicRepository(private val musicDao: MusicDao) {
         }
 
 
-    val getMusices : MutableLiveData<List<Music>> = musicDao.getMusices()
+    val getMusic : MutableLiveData<List<Music>> = musicDao.getMusic()
 }

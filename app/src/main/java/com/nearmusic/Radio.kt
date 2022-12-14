@@ -68,7 +68,7 @@ class Radio : AppCompatActivity() {
     private  fun Back(){
 
         buttonBack.setOnClickListener {
-            val intent = Intent(this, Musica::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             this.startActivity(intent)
             mPlayer.release()
 

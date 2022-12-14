@@ -43,7 +43,7 @@ class AddMusicFragment : Fragment() {
 
 
 
-    val REQUEST_MP3_GET = 1
+
     private lateinit var musicViewModel: MusicViewModel
     private var _binding: FragmentAddMusicBinding? = null
     private val binding get() = _binding!!

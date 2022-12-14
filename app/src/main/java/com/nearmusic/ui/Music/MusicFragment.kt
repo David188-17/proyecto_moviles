@@ -39,8 +39,8 @@ class MusicFragment : Fragment() {
         reciclador.adapter = MusicAdapter
         reciclador.layoutManager= LinearLayoutManager(requireContext())
 
-        MusicViewModel.getMusices.observe(viewLifecycleOwner) {
-                Musices -> MusicAdapter.setListaMusices(Musices)
+        MusicViewModel.getMusic.observe(viewLifecycleOwner) {
+                Music -> MusicAdapter.setListaMusices(Music)
         }
 
         return binding.root
