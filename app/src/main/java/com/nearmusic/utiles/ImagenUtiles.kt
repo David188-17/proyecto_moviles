@@ -31,6 +31,7 @@ class ImagenUtiles (
     private lateinit var currentPhotoPath: String
 
     @SuppressLint("QueryPermissionsNeeded")
+    // esta funcion se encarga de capturar la imagen con la camara del dispositivo
     private fun tomarFoto() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         if (intent.resolveActivity(contexto.packageManager) != null) {
@@ -43,7 +44,7 @@ class ImagenUtiles (
             tomarFotoActivity.launch(intent)
         }
     }
-
+    // esta funcion se encarga de crear la imagen como un archivo camara como es el .jpg
     private fun createImageFile(): File {
         val archivo=OtrosUtiles.getTempFile("imagen_")
         val storageDir: File? =
@@ -55,7 +56,7 @@ class ImagenUtiles (
         currentPhotoPath = image.absolutePath
         return image
     }
-
+//este como su nombre lo dice se encarga de actulizar u cambiar la foto
     fun actualizaFoto() {
         imagen.setImageBitmap(
             BitmapFactory.decodeFile(imagenFile.absolutePath))
