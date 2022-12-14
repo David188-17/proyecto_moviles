@@ -51,6 +51,14 @@
             android:layout_height="wrap_content"
             android:text="@string/bt_add_Music" />
 
+
+        <Button
+            android:id="@+id/btradio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bt_radio" />
+
+
         <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
@@ -147,11 +155,7 @@
 
 
 
-        <Button
-            android:id="@+id/btradio"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bt_radio" />
+
 
     </LinearLayout>
 </ScrollView>
