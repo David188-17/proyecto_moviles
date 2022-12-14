@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
+// aca se implemento la funcion para poder ingresar mediante google
     private fun googleSignIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, 5000)
