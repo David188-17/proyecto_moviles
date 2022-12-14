@@ -14,15 +14,15 @@ class MusicViewModel : ViewModel() {
     private val musicRepository: MusicRepository = MusicRepository(MusicDao())
     val getMusices: MutableLiveData<List<Music>> = musicRepository.getMusices
 
-//....
 
 
+// esta funcion se encargar de guardar la musica que se requiera
     fun saveMusic(music: Music) {
         viewModelScope.launch(Dispatchers.IO) {
             musicRepository.saveMusic(music)
         }
     }
-
+    // esta funcion se encargar de borrar la musica que se necesite
     fun deleteMusic(music: Music) {
         viewModelScope.launch(Dispatchers.IO) {
             musicRepository.deleteMusic(music)

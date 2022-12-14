@@ -66,6 +66,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // en esta seccion desarrollamos la funcion privada llamada firebaseAuthWithGoogle
+    // en la cual se logra apreciar qie utiliza los serivcios de firebase y google para asi crear el ususario y recurperar su info
     private fun firebaseAuthWithGoogle(idToken: String?) {
 
         val credenciales = GoogleAuthProvider.getCredential(idToken, null)
@@ -84,16 +86,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-
-
-
-
-
-
-
-
-
-
+// en esta seccion desarrollamos la funcion haceRegistro en la cual se logra apreciar qie utiliza los serivcios de firebase para asi crear el ususario y recurperar su info
 
 
     private fun haceRegistro() {
@@ -116,6 +109,8 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    // en esta seccion desarrollamos la funcion haceLogin  esta funcion muy parecida  a la pasada pero esta es la que realiza el ingreso a la propia aplicacion
+
     private fun haceLogin() {
 
         val email = binding.etEmail.text.toString()
@@ -137,6 +132,7 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    //esta funcion hace el intent para poder llegar a principal
     private fun actualiza(user: FirebaseUser?) {
 
         if (user != null) {

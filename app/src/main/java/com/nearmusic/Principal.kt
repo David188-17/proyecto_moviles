@@ -49,7 +49,7 @@ class Principal : AppCompatActivity() {
     }
 
 
-
+// en esta seccion del codigo realizamos la funcion actualiza para poder como dice el nombre actualizar los datos necesarios
     private fun actualiza(navView: NavigationView) {
         val vista: View = navView.getHeaderView(0)
         val nombre: TextView = vista.findViewById(R.id.nombre_usuario)
