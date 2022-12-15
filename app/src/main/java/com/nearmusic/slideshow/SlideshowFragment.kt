@@ -8,7 +8,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.nearmusic.databinding.FragmentSlideshowBinding
-
+//aca se desarrollo el slideshow fragment
+// con sus create view y destroy view
 class SlideshowFragment : Fragment() {
 
     private var _binding: FragmentSlideshowBinding? = null
