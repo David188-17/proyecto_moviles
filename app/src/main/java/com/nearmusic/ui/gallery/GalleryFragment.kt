@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.nearmusic.databinding.FragmentGalleryBinding
-
+//aca se desarrollo el galery fragment con sus create view y destroy view
 class GalleryFragment : Fragment() {
 
     private var _binding: FragmentGalleryBinding? = null
