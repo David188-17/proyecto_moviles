@@ -5,7 +5,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-
+//en el model es donde se establecen datos y que tipos de datos van a ser
 data class Music(
 
     var id:String,

@@ -11,7 +11,7 @@ import com.google.firebase.ktx.Firebase
 
 import com.nearmusic.model.Music
 
-
+//aca procedimos a crear el music dao
 class MusicDao {
 
     //variables usadas para poder generar la estructura en la nube
@@ -30,7 +30,7 @@ class MusicDao {
 
     }
      fun saveMusic(music: Music){
-         //Para definir un documento en la nube
+         //Para definir un documento en la nube.
 
 val documento : DocumentReference
 
@@ -55,7 +55,7 @@ collection(coleccion1)
 
 
 }
-         //ahora se modifica o crea el documento
+         //ahora se modifica o crea el documento.
          documento.set(music)
              .addOnCompleteListener{
                  Log.d("saveMusic","Music creado/actualizado")
@@ -70,7 +70,7 @@ collection(coleccion1)
 
 
      fun deleteMusic(music: Music) {
-         // se valida si el music tiene id... para poder borrarlo
+         // se valida si el music tiene id... para poder borrarlo:)
          if (music.id.isEmpty()) {//si  no esta vacio ... se puede eliminar
              firestore.
              collection(coleccion1)
