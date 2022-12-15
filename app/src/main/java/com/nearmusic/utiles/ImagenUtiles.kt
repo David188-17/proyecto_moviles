@@ -50,7 +50,7 @@ class ImagenUtiles (
             contexto.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val image= File.createTempFile(
             archivo,       /* prefijo */
-            ".jpg",  /* extensión */
+            ".png",  /* extensión */
             storageDir    /* directorio */)
         currentPhotoPath = image.absolutePath
         return image

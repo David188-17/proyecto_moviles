@@ -92,8 +92,8 @@ class AddMusicFragment : Fragment() {
 
 
         tomarFotoActivity = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) {
+            ActivityResultContracts.StartActivityForResult()){
+
             if (it.resultCode == Activity.RESULT_OK) {
                 imagenUtiles.actualizaFoto()
 
@@ -107,8 +107,8 @@ class AddMusicFragment : Fragment() {
             binding.btRotaL,
             binding.btRotaR,
             binding.imagen,
-            tomarFotoActivity
-        )
+            tomarFotoActivity)
+
 
         val intent = Intent(requireContext(), Musica::class.java)
         binding.btradio.setOnClickListener {
@@ -127,12 +127,13 @@ class AddMusicFragment : Fragment() {
     private fun subeNota() {
 
         val archivoLocal = audioUtiles.audioFile
-        if(archivoLocal.exists() && archivoLocal.isFile &&
+        if(archivoLocal.exists() &&
+            archivoLocal.isFile &&
             archivoLocal.canRead()) {
 
             val rutaLocal = Uri.fromFile(archivoLocal)
 
-            val rutaNube = "lugaresApp/${Firebase.auth.currentUser?.email}/audios/${archivoLocal.name}"
+            val rutaNube = "MusicApp/${Firebase.auth.currentUser?.email}/audios/${archivoLocal.name}"
 
             val referencia: StorageReference = Firebase.storage.reference.child(rutaNube)
 
